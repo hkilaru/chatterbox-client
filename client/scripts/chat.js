@@ -1,3 +1,5 @@
+
+
 var buildfeed = function(array){
   var $feed = $('#feed');
       $feed.html('');
@@ -24,8 +26,9 @@ var buildfeed = function(array){
 }
 
 var getRooms = function(array){
-  // debugger;
   var rooms = {};
+  $dropdown = $('#dropdown');
+  $dropdown.html('');
   // debugger;
   for(var y = 0; y < array.length; y++){
     rooms[array[y].roomname] = 'room';
@@ -35,11 +38,8 @@ var getRooms = function(array){
     var $room = $('<option></option>');
     $room.text(room);
     $room.val(room);
-    $dropdown = $('#dropdown');
     $dropdown.append($room);
   }
-  console.log(rooms);
-
 }
 
 
@@ -48,19 +48,27 @@ var getRooms = function(array){
   })
 
   $("#sendMessage").on('click', function() {
+    var selected = $('#dropdown').find(":selected").val();
     var message = {
     username: document.URL.slice(83),
     text: $("#message").val(),
-    roomname: "lobby"
-};
-    sendMessage(message)
+    roomname: selected
+    };
+    sendMessage(message);
   })
-  $('#dropdown').on('change', function (){
 
+  $('#dropdown').on('change', function (){
     var selected = $('#dropdown').find(":selected").val();
     $('.message').hide();
-    $('.'+selected).closest('.message').show()
-    console.log('hi');
+    $('.'+selected).closest('.message').show();
+  })
+
+  $('#newRoom').on('click', function(){
+    var $room = $('<option></option>');
+    var selected = $('#roomName').val();
+    $room.text(selected);
+    $room.val(selected);
+    $dropdown.append($room);
   })
 
 

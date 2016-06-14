@@ -1,8 +1,7 @@
+
 // YOUR CODE HERE:
 
 function getData(){
-
-
   $.ajax({
   // This is the url you should use to communicate with the parse API server.
   url: 'https://api.parse.com/1/classes/chatterbox?order=-createdAt',
@@ -10,7 +9,6 @@ function getData(){
   //data: JSON.parse(message),
   contentType: 'application/json',
   success: function (data) {
-    console.log(data);
     //var messageArray = data[results];
     getRooms(data.results);
     buildfeed(data.results);
@@ -24,10 +22,7 @@ function getData(){
 
 }
 
-
 function sendMessage(message){
-
-
  $.ajax({
   // This is the url you should use to communicate with the parse API server.
   url: 'https://api.parse.com/1/classes/chatterbox',
@@ -35,8 +30,6 @@ function sendMessage(message){
   data: JSON.stringify(message),
   contentType: 'application/json',
   success: function (data) {
-    console.log(message);
-    console.log(data);
     getData();
   },
   error: function (data) {
