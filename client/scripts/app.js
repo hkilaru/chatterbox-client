@@ -6,7 +6,7 @@ var publicAPI;
 
     publicAPI = {
 
-        buildfeed: buildfeed,
+        buildfeed: buildfeed
 
 
 

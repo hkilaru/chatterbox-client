@@ -1,4 +1,7 @@
 var buildfeed = function(array){
+  var $feed = $('#feed');
+      $feed.html('');
+
   for(var x = 0; x < array.length; x++){
     if(array[x].username === "Courtesy of Colin & Andy (YOURE WELCOME!!)") {
       continue;
@@ -7,12 +10,12 @@ var buildfeed = function(array){
     var message = array[x].text;
     var roomName = array[x].roomname;
     var $message = $('<div class="message" style="background-color:#eee; margin:5px; width:100%;"></div');
-    var $username = $('<div class="username"></div');
-    var $roomname = $('<div class="roomname"></div')
+    var $username = $('<div class="username"></div>');
+    var $roomname = $('<div class="roomname"></div>');
     $message.text(message);
     $username.text("From: " + username);
     $roomname.text(roomName);
-    $('#main').append($message);
+    $feed.append($message);
     $message.append($username);
     $message.append($roomname);
 
