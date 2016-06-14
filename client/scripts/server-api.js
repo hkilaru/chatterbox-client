@@ -6,10 +6,11 @@ function getData(){
   // This is the url you should use to communicate with the parse API server.
   url: 'https://api.parse.com/1/classes/chatterbox?order=-createdAt',
   type: 'GET',
-  //data: JSON.parse(message),
+  // data: JSON.parse(message),
   contentType: 'application/json',
   success: function (data) {
     //var messageArray = data[results];
+    console.log(data);
     getRooms(data.results);
     buildfeed(data.results);
 

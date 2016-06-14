@@ -5,18 +5,20 @@ var buildfeed = function(array){
       $feed.html('');
 
   for(var x = 0; x < array.length; x++){
-    if(array[x].username === "Courtesy of Colin & Andy (YOURE WELCOME!!)") {
-      continue;
-    }
+    // if(array[x].username === "Courtesy of Colin & Andy (YOURE WELCOME!!)") {
+    //   continue;
+    // }
     var username = array[x].username;
     var message = array[x].text;
     var roomName = array[x].roomname;
     var $message = $('<div class="message" style="background-color:#eee; margin:5px; width:100%;"></div');
-    var $username = $('<div class="username"></div>');
+    var $username = $('<a></a>');
     var $roomname = $('<div></div>');
     $roomname.addClass(roomName);
     $roomname.text(roomName);
     $message.text(message);
+    $username.attr('href', "#");
+    $username.addClass(username);
     $username.text("From: " + username);
     $feed.append($message);
     $message.append($username);
@@ -71,6 +73,20 @@ var getRooms = function(array){
     $dropdown.append($room);
   })
 
+
+// var friendList = {};
+// var addFriend =  function(username) {
+//   friendList[username] = true;
+//   console.log(friendList);
+//   for(var key in friendList){
+
+//   }
+// }
+
+$('body').on('click', 'a', function(){
+  var friend = $(this).attr('class');
+  $('.' + friend).closest('.message').css('font-weight','bold');
+})
 
 
 
