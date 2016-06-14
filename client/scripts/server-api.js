@@ -12,7 +12,9 @@ function getData(){
   success: function (data) {
     console.log(data);
     //var messageArray = data[results];
+    getRooms(data.results);
     buildfeed(data.results);
+
   },
   error: function (data) {
     // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
